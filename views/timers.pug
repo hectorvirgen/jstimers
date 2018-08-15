@@ -1,0 +1,135 @@
+extends layout
+
+block content
+  .grid-x.grid-padding-x
+    .large-6.cell
+      h2 JavaScript Timers
+      h4 How fast can you iterate?
+
+    .large-6.cell
+      .clock
+        span.hours 0
+        span.minutes :00
+        span.seconds :00
+        span.milliseconds .000
+        span.ampm am
+        div: label
+            input(type="checkbox", name="clock-enabled", checked="checked")
+            | Enabled
+
+  div
+    label
+      | Test Duration (ms)
+      input(type="number", name="duration", min="1", max="60000", value="5000")
+  .grid-x.grid-padding-x
+    .large-6.cell
+      #set-timeout.timer
+        h6
+          label
+            input(type="checkbox")
+            code setTimeout(fn, <input type="number" name="set-timeout-delay" min="0" max="1000" value="0" size="4" />);
+        .grid-x.grid-padding-x
+          .small-4.cell
+            a.button.run Run!
+          .small-4.cell
+            .result --
+          .small-4.cell
+            .sparkline
+    .large-6.cell
+      #set-interval.timer
+        h6
+          label
+            input(type="checkbox")
+            code setInterval(fn, <input type="number" name="set-interval-delay" min="0" max="1000" value="0" size="4" />);
+        .grid-x.grid-padding-x
+          .small-4.cell
+            a.button.run Run!
+          .small-4.cell
+            .result --
+          .small-4.cell
+            .sparkline
+    .large-6.cell
+      #request-animation-frame.timer
+        h6
+          label
+            input(type="checkbox")
+            code requestAnimationFrame(fn);
+        .grid-x.grid-padding-x
+          .small-4.cell
+            a.button.run Run!
+          .small-4.cell
+            .result --
+          .small-4.cell
+            .sparkline
+    .large-6.cell
+      #post-message.timer
+        h6
+          label
+            input(type="checkbox")
+            code postMessage(message, origin);
+        .grid-x.grid-padding-x
+          .small-4.cell
+            a.button.run Run!
+          .small-4.cell
+            .result --
+          .small-4.cell
+            .sparkline
+    .large-6.cell
+      #while-loop.timer
+        h6
+          label
+            input(type="checkbox")
+            code while (true) { ... }
+        .grid-x.grid-padding-x
+          .small-4.cell
+            a.button.run Run!
+          .small-4.cell
+            .result --
+          .small-4.cell
+            .sparkline
+    .large-6.cell
+      #web-worker.timer
+        h6
+          label
+            input(type="checkbox")
+            code new Worker(path);
+        .grid-x.grid-padding-x
+          .small-4.cell
+            a.button.run Run!
+          .small-4.cell
+            .result --
+          .small-4.cell
+            .sparkline
+    .large-6.cell
+      #promise.timer
+        h6
+          label
+            input(type="checkbox")
+            code new Promise(fn);
+        .grid-x.grid-padding-x
+          .small-4.cell
+            a.button.run Run!
+          .small-4.cell
+            .result --
+          .small-4.cell
+            .sparkline
+    .large-6.cell
+      #async.timer
+        h6
+          label
+            input(type="checkbox")
+            code async/await
+        .grid-x.grid-padding-x
+          .small-4.cell
+            a.button.run Run!
+          .small-4.cell
+            .result --
+          .small-4.cell
+            .sparkline
+    .small-12.cell
+      div
+        label
+          input#enable-audio(type="checkbox")
+          | Enable Audio
+      a.button.run-selected Run selected in parallel
+
