@@ -46,7 +46,7 @@
 
       $timer.find(".sparkline").sparkline(data, {
         type: 'line',
-        width: '6em',
+        width: '8em',
         height: '2em',
         chartRangeMin: 0
       });
@@ -186,16 +186,22 @@
   var oscillator = audioCtx.createOscillator();
   var gainNode = audioCtx.createGain();
 
-  oscillator.type = 'sawtooth';
-  oscillator.frequency.setValueAtTime(440, audioCtx.currentTime); // value in hertz
+  oscillator.type = 'sine';
+  oscillator.frequency.setValueAtTime(220, audioCtx.currentTime); // value in hertz
   oscillator.connect(gainNode);
   gainNode.connect(audioCtx.destination);
   oscillator.start();
   gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
 
   $('#enable-audio').change(function(event) {
-    const amplitude = $(this).is(':checked') ? 1 : 0;
-    gainNode.gain.setValueAtTime(amplitude, audioCtx.currentTime);
+    const amplitude = $(this).is(':checked') ? 0.1 : 0;
+    if (amplitude) {
+      audioCtx.resume().then(() => {
+        gainNode.gain.setValueAtTime(amplitude, audioCtx.currentTime);
+      });
+    } else {
+      gainNode.gain.setValueAtTime(amplitude, audioCtx.currentTime);
+    }
   });
 
   var clockEnabled = true;
