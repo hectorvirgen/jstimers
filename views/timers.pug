@@ -17,10 +17,6 @@ block content
             input(type="checkbox", name="clock-enabled", checked="checked")
             | Enabled
 
-  div
-    label
-      | Test Duration (ms)
-      input(type="number", name="duration", min="1", max="60000", value="5000")
   .grid-x.grid-padding-x
     .large-6.cell
       #set-timeout.timer
@@ -131,5 +127,17 @@ block content
         label
           input#enable-audio(type="checkbox")
           | Enable Audio
+
+      div
+        label
+          | Test Duration (ms)
+          input(type="number", name="duration", min="1", max="60000", value="5000")
+
+      div
+        button.button.trigger-alert(type="button") Trigger Alert
+        | &nbsp;
+        button.button.trigger-prompt(type="button") Trigger Prompt
+
+
       a.button.run-selected Run selected in parallel
 

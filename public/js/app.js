@@ -15,6 +15,16 @@
     run($timer);
   });
 
+  $('.trigger-alert').click(function(event) {
+    event.preventDefault();
+    alert('Alert! Button was clicked!');
+  });
+
+  $('.trigger-prompt').click(function(event) {
+    event.preventDefault();
+    prompt('Why did you trigger this prompt?');
+  });
+
   var run = function($timer) {
     var $button = $timer.find('a.run');
     var id = $timer.prop('id');
